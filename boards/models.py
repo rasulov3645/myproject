@@ -10,18 +10,22 @@ class Board(models.Model):
 	description = models.CharField(max_length=100)
 
 
+	def __str__(self): 
+		return self.name
+
+
 
 class Topic(models.Model): 
 	subject = models.CharField(max_length=255)
 	last_updated = models.DateTimeField(auto_now_add=True)
-	board = models.ForeingKey(Board, related_name='topics')
-	starter = models.ForeingKey(User, related_name='topics')
+	board = models.ForeignKey(Board, related_name='topics')
+	starter = models.ForeignKey(User, related_name='topics')
 
 
 class Post(models.Model): 
 	message = models.TextField(max_length=4000)
-	topic = models.ForeingKey(Topic, related_name='posts')
+	topic = models.ForeignKey(Topic, related_name='posts')
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(null=True)
-	created_by = models.ForeingKey(User, related_name='posts')
-	updated_by = models.ForeingKey(User, null=True, related_name='+')
+	created_by = models.ForeignKey(User, related_name='posts')
+	updated_by = models.ForeignKey(User, null=True, related_name='+')
