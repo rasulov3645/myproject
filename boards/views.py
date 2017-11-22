@@ -6,8 +6,8 @@ from .models import Board
 # Create your views here.
 
 def home(request): 
-	boards = Board.objecs.all()
-	boards_name = list()
+	boards = Board.objects.all()
+	boards_names = list()
 
 	for board in boards: 
 		boards_names.append(board.name)
