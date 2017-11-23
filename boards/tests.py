@@ -140,6 +140,3 @@ class NewTopicTests(TestCase):
 		self.assertFalse(Topic.objects.exists())
 		self.assertFalse(Post.objects.exists())
 
-
-
-
